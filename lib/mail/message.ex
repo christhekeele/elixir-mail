@@ -204,9 +204,9 @@ defmodule Mail.Message do
 
   ## Custom mimetype library
 
-  By default `Mail` will use its own internal mimetype adapter. However,
+  By default `Mail` will use a mimetype adapter extracted from Plug. However,
   you may want to rely on `Plug` and the custom mimetypes that you have
-  created for it. You can override the mimetype function in the
+  already created for it. You can override the mimetype function in the
   `config.exs` of your application:
 
       config :mail, mimetype_fn: &CustomMimeAdapter.type/1
@@ -295,7 +295,7 @@ defmodule Mail.Message do
     do: Enum.any?(parts, &(fun.(&1)))
 
   defp mimetype(filename) do
-    mimetype_fn = Application.get_env(:mail, :mimetype_fn) || &Mail.MIME.type/1
+    mimetype_fn = Application.get_env(:mail, :mimetype_fn) || &MIME.type/1
 
     extension =
       Path.extname(filename)
