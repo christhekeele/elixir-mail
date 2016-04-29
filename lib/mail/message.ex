@@ -204,10 +204,9 @@ defmodule Mail.Message do
 
   ## Custom mimetype library
 
-  By default `Mail` will use a mimetype adapter extracted from Plug. However,
-  you may want to rely on `Plug` and the custom mimetypes that you have
-  already created for it. You can override the mimetype function in the
-  `config.exs` of your application:
+  By default `Mail` will use the same mimetype library and configuration
+  you use in Plug: `config :mime, :types, %{"custom" => ["types"]}`. However,
+  you can override the mimetype function in the `config.exs` of your application:
 
       config :mail, mimetype_fn: &CustomMimeAdapter.type/1
 

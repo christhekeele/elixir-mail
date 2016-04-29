@@ -46,7 +46,7 @@ defmodule Mail.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:mime_types, "~> 0.1"},
+      {:mime, "~> 1.0.0"},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.11", only: :dev}
     ]
